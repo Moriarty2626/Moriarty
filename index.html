@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>История дома Мориарти</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-overlay"></div>
+
+  <div id="login-screen" class="screen active">
+    <div class="login-card">
+      <div class="crest-login">
+        <img src="assets/relic-crest.jpg" alt="Герб" class="crest-img-sm">
+      </div>
+      <h1>Дом Мориарти</h1>
+      <p class="subtitle">Архивы ордена</p>
+      <div class="role-select">
+        <label for="role">Роль</label>
+        <select id="role">
+          <option value="observer">Наблюдатель</option>
+          <option value="master">Магистр ордена</option>
+          <option value="head">Глава ордена</option>
+        </select>
+      </div>
+      <div class="name-input">
+        <label for="username">Имя</label>
+        <input type="text" id="username" placeholder="Введите имя..." maxlength="24" autocomplete="username">
+      </div>
+      <div id="password-block" class="name-input hidden">
+        <label for="password">Пароль</label>
+        <input type="password" id="password" placeholder="Пароль..." maxlength="64" autocomplete="current-password">
+      </div>
+      <button id="enter-btn" class="btn-primary">Войти в архивы</button>
+      <p id="login-error" class="error hidden"></p>
+      <p class="hint">Наблюдатель входит без пароля.<br>Магистр и Глава — только по паролю.</p>
+    </div>
+  </div>
+
+  <div id="main-screen" class="screen">
+    <header class="header">
+      <div class="logo">
+        <img src="assets/relic-crest.jpg" alt="" class="logo-crest">
+        <span>Дом Мориарти</span>
+      </div>
+      <nav class="nav" id="main-nav">
+        <button class="nav-btn active" data-tab="origin">Зарождение</button>
+        <button class="nav-btn" data-tab="life">Жизнь</button>
+        <button class="nav-btn" data-tab="heads">Главы</button>
+        <button class="nav-btn" data-tab="relics">Реликвии</button>
+        <button class="nav-btn" data-tab="crest">Герб</button>
+        <button class="nav-btn" data-tab="traitors">Предатели ордена</button>
+        <button class="nav-btn" data-tab="templars">Тамплиеры</button>
+        <button class="nav-btn" data-tab="betrayals">Предательства</button>
+        <button class="nav-btn" data-tab="decline">Упадок</button>
+        <button class="nav-btn locked" data-tab="secrets" id="secrets-btn">
+          <span class="lock-icon">🔒</span> Секреты
+        </button>
+      </nav>
+      <div class="user-info">
+        <span id="user-role-badge" class="badge"></span>
+        <span id="user-name-display"></span>
+        <button id="settings-btn" class="btn-ghost" title="Настройки">⚙</button>
+        <button id="logout-btn" class="btn-ghost">Выйти</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- Зарождение -->
+      <section id="tab-origin" class="tab-panel active">
+        <h2>История зарождения</h2>
+        <div class="article">
+          <p class="lead">В тени городских туманов, задолго до того, как имя Мориарти стало известным, родился дом, чья кровь текла сквозь века интриг.</p>
+          <p>Основатель рода — <strong>Джеймс Мориарти</strong> — появился на свет в <strong>1755</strong> году в обедневшем аристократическом доме Тумэн.</p>
+          <p>К концу XVIII века Мориарти уже контролировал сеть информаторов по всему континенту. Их девиз: <em>«Umbra Custos, Lux Judex»</em> — Тень — Страж, Свет — Судья.</p>
+          <p>В <strong>1775</strong> году основатель создал <strong>Орден тамплиеров</strong> — организацию, подчиняющуюся дому.</p>
+          <p>В <strong>1795</strong> году под командованием Джеймса Мориарти орден одержал победу в гражданской войне в доме Тумэн, за что получил часть территорий и основал собственный <strong>дом Мориарти</strong>.</p>
+          <blockquote>
+            «Мы правим из тени.» — из дневника основателя, 1791 г.
+          </blockquote>
+          <p>Так началась история дома, который предпочитал оставаться в тени, но чьё влияние ощущалось в каждом крупном событии.</p>
+        </div>
+      </section>
+
+      <!-- Жизнь -->
+      <section id="tab-life" class="tab-panel">
+        <h2>Жизнь дома</h2>
+        <div class="article">
+          <p class="lead">Золотой век дома Мориарти — эпоха, когда дом стал невидимой осью власти.</p>
+          <p>Под руководством глав рода сеть охватывала академии, дворы, банки и теневые гильдии. Наблюдатели следили, Магистры управляли, Глава видел партию целиком.</p>
+          <p>Девиз дома на гербе: <em>Mens Agitat Molem</em> — Разум движет массой.</p>
+          <h3 style="font-family:var(--font-display);color:var(--gold);margin:1.25rem 0 0.6rem;">Главы дома — даты вступления</h3>
+          <ul class="timeline">
+            <li><span class="year">до 1800</span> — Джеймс Мориарти, Основатель.</li>
+            <li><span class="year">1800</span> — Альберт Джеймс Мориарти становится Главой дома.</li>
+            <li><span class="year">1820</span> — Теодор Джеймс Мориарти становится Главой дома.</li>
+            <li><span class="year">1855</span> — Себастьян Джеймс Мориарти становится Главой дома.</li>
+            <li><span class="year">1890</span> — Эдмунд Джеймс Мориарти становится Главой дома.</li>
+            <li><span class="year">1970</span> — Луис Джеймс Мориарти становится Главой дома.</li>
+            <li><span class="year">2020</span> — Уильям Джеймс Мориарти становится Главой дома.</li>
+          </ul>
+          <h3 style="font-family:var(--font-display);color:var(--gold);margin:1.5rem 0 0.6rem;">Хроника</h3>
+          <ul class="timeline">
+            <li><span class="year">1755</span> — рождение основателя Джеймса Мориарти.</li>
+            <li><span class="year">1795</span> — создание дома Мориарти.</li>
+            <li><span class="year">1800</span> — смерть Джеймса Мориарти.</li>
+            <li><span class="year">1805—1810</span> — война с домом Тумэн.</li>
+            <li><span class="year">1820</span> — смерть Альберта Джеймса Мориарти.</li>
+            <li><span class="year">1820—1855</span> — укрепление Ордена тамплиеров и дома Мориарти.</li>
+            <li><span class="year">1855—1875</span> — расширение за счёт войны с домом Тумэн.</li>
+            <li><span class="year">1875—1900</span> — наращивание армии и казны.</li>
+            <li><span class="year">1890</span> — смерть Себастьяна Джеймса Мориарти.</li>
+            <li><span class="year">1890—1970</span> — наращивание агентурных сетей и назначение марионеточных правлений в разных домах.</li>
+            <li><span class="year">1970</span> — смерть Эдмунда Джеймса Мориарти.</li>
+            <li><span class="year">1980</span> — сопротивление объединению государств; поражение, присоединение к новому государству и потеря территорий.</li>
+            <li><span class="year">2019</span> — Луис Джеймс Мориарти объявлен предателем Ордена тамплиеров.</li>
+            <li><span class="year">2020</span> — смерть Луиса Джеймса Мориарти; Уильям Джеймс Мориарти объявлен предателем Ордена тамплиеров.</li>
+            <li><span class="year">2021</span> — раскол Ордена тамплиеров на две фракции.</li>
+            <li><span class="year">2022</span> — полное уничтожение Ордена тамплиеров.</li>
+            <li><span class="year">2024</span> — Уильям Джеймс Мориарти уезжает за границу.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Главы ордена -->
+      <section id="tab-heads" class="tab-panel">
+        <h2>Главы ордена</h2>
+        <p class="section-intro">Те, кто носил бремя Главы. Линия дома Мориарти.</p>
+        <div class="heads-grid">
+          <article class="head-card">
+            <div class="head-portrait">
+              <img src="assets/head-james.jpg" alt="Джеймс Мориарти">
+            </div>
+            <div class="head-info">
+              <span class="head-num">I</span>
+              <h3>Джеймс Мориарти</h3>
+              <p class="head-role">Основатель</p>
+              <p class="head-years">1755 — 1800 · правление до 1800</p>
+              <p class="head-desc">Основатель линии. Математик, стратег, архитектор ордена.</p>
+            </div>
+          </article>
+          <article class="head-card">
+            <div class="head-portrait">
+              <img src="assets/head-mid1.jpg" alt="Альберт Джеймс Мориарти">
+            </div>
+            <div class="head-info">
+              <span class="head-num">II</span>
+              <h3>Альберт Джеймс Мориарти</h3>
+              <p class="head-role">Глава дома</p>
+              <p class="head-years">1785 — 1820 · правление 1800 — 1820</p>
+              <p class="head-desc">Рыцарь ордена. Укрепил военную ветвь дома.</p>
+            </div>
+          </article>
+          <article class="head-card">
+            <div class="head-portrait">
+              <img src="assets/head-mid-new.jpg" alt="Теодор Джеймс Мориарти">
+            </div>
+            <div class="head-info">
+              <span class="head-num">III</span>
+              <h3>Теодор Джеймс Мориарти</h3>
+              <p class="head-role">Глава дома</p>
+              <p class="head-years">1800 — 1855 · правление 1820 — 1855</p>
+              <p class="head-desc">Связующее звено с Орденом тамплиеров. Хранитель клятв.</p>
+            </div>
+          </article>
+          <article class="head-card">
+            <div class="head-portrait">
+              <img src="assets/head-mid2.jpg" alt="Себастьян Джеймс Мориарти">
+            </div>
+            <div class="head-info">
+              <span class="head-num">IV</span>
+              <h3>Себастьян Джеймс Мориарти</h3>
+              <p class="head-role">Глава дома</p>
+              <p class="head-years">1835 — 1900 · правление 1855 — 1900</p>
+              <p class="head-desc">Хранитель архивов и рунических знаний.</p>
+            </div>
+          </article>
+          <article class="head-card">
+            <div class="head-portrait">
+              <img src="assets/head-mid3.jpg" alt="Эдмунд Джеймс Мориарти">
+            </div>
+            <div class="head-info">
+              <span class="head-num">V</span>
+              <h3>Эдмунд Джеймс Мориарти</h3>
+              <p class="head-role">Глава дома</p>
+              <p class="head-years">1890 — 1970 · правление 1900 — 1970</p>
+              <p class="head-desc">Тень суда. Расширил сеть наблюдателей.</p>
+            </div>
+          </article>
+          <article class="head-card">
+            <div class="head-portrait">
+              <img src="assets/head-louis.jpg" alt="Луис Джеймс Мориарти">
+            </div>
+            <div class="head-info">
+              <span class="head-num">VI</span>
+              <h3>Луис Джеймс Мориарти</h3>
+              <p class="head-role">Глава дома</p>
+              <p class="head-years">1955 — 2020 · правление 1970 — 2020</p>
+              <p class="head-desc">Тень при троне. Имя, которое не произносят вслух.</p>
+            </div>
+          </article>
+          <article class="head-card">
+            <div class="head-portrait">
+              <img src="assets/head-william.jpg" alt="Уильям Джеймс Мориарти">
+            </div>
+            <div class="head-info">
+              <span class="head-num">VII</span>
+              <h3>Уильям Джеймс Мориарти</h3>
+              <p class="head-role">Глава дома</p>
+              <p class="head-years">1999 — **** · правление с 2020</p>
+              <p class="head-desc">Ушёл за горизонт. Основатель революционного фронта.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Реликвии -->
+      <section id="tab-relics" class="tab-panel">
+        <h2>Реликвии ордена</h2>
+        <p class="section-intro">Оружие и знаки, пережившие века.</p>
+        <div class="relics-grid">
+          <article class="relic-card wide">
+            <img src="assets/relic-sword.png" alt="Клинок ордена">
+            <div class="relic-caption">
+              <h3>Клинок дома Мориарти</h3>
+              <p>Полуторник. Чёрный клинок, золотые руны, рубины в гарде. Символ власти Главы.</p>
+            </div>
+          </article>
+          <article class="relic-card">
+            <img src="assets/relic-scythe.jpg" alt="???">
+            <div class="relic-caption">
+              <h3>???</h3>
+              <p>Имя утрачено. Красный и чёрный. Жатва, которой боятся даже враги дома.</p>
+            </div>
+          </article>
+          <article class="relic-card">
+            <img src="assets/relic-mask.png" alt="Маска">
+            <div class="relic-caption">
+              <h3>Маска чумы</h3>
+              <p>Чёрный клюв, цепи и ворон. Лицо, которое носят в час казни и суда.</p>
+            </div>
+          </article>
+          <article class="relic-card">
+            <img src="assets/relic-suit.png" alt="Облачение">
+            <div class="relic-caption">
+              <h3>Облачение тени</h3>
+              <p>Парадный чёрный строй дома. Носится в часы суда и казни.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Предатели -->
+      <section id="tab-traitors" class="tab-panel">
+        <h2>Предатели ордена</h2>
+        <p class="section-intro">Те, кто предал орден. Их имена не стёрты — как предупреждение.</p>
+        <div id="traitors-list" class="heads-grid">
+          <article class="head-card">
+            <div class="head-portrait">
+              <img src="assets/traitor1.jpg" alt="Луис Джеймс Мориарти">
+            </div>
+            <div class="head-info">
+              <span class="head-num" style="color:#a44">†</span>
+              <h3>Луис Джеймс Мориарти <span class="status-dead">убит</span></h3>
+              <p class="head-role">Предатель ордена</p>
+              <p class="head-desc">Предал дом. Приговор приведён в исполнение.</p>
+            </div>
+          </article>
+          <article class="head-card">
+            <div class="head-portrait">
+              <img src="assets/traitor2.jpg" alt="Уильям Джеймс Мориарти">
+            </div>
+            <div class="head-info">
+              <span class="head-num" style="color:#a44">†</span>
+              <h3>Уильям Джеймс Мориарти</h3>
+              <p class="head-role">Предатель ордена</p>
+              <p class="head-desc">Ушёл за горизонт. Имя внесено в чёрный список ордена.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Предательства (текст) -->
+      <section id="tab-betrayals" class="tab-panel">
+        <h2>Предательства</h2>
+        <div class="article">
+          <p class="lead">Ни один дом не стоит вечно без трещин. Самый глубокий шрам оставил тот, кого звали Главой.</p>
+
+          <h3 style="font-family:var(--font-display);color:var(--gold);margin:1.25rem 0 0.6rem;">Луис Джеймс Мориарти</h3>
+          <p>Под покровом ночи и титула Главы дома Луис Джеймс Мориарти заключил тайный союз с <strong>культом Высшей Крови</strong>. Пока орден и дом верили, что он укрепляет их позиции, он перекачивал активы казны, склады и агентурные сети — всё, что должно было служить тени Мориарти, уходило на питание культа.</p>
+          <p>Жертвы не ограничивались цифрами в отчётах. Мирные жители, рядовые члены ордена и даже кровные родичи дома приносились в жертву ритуалам Высшей Крови. Их имена вычеркивались из архивов, их исчезновения списывались на «операции» и «несчастные случаи».</p>
+          <p>Когда правда всплыла, приговор был единогласным. В <strong>2019</strong> году Луис Джеймс Мориарти был объявлен предателем Ордена тамплиеров; в <strong>2020</strong> — казнён. Его лицо сохранено в «Предателях ордена» как предупреждение: даже Глава не выше закона тени.</p>
+
+          <blockquote>
+            «Тень не прощает тех, кто пытается выйти на свет без разрешения.» — из кодекса дома
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- Упадок -->
+      <section id="tab-decline" class="tab-panel">
+        <h2>Упадок</h2>
+        <div class="article">
+          <p class="lead">После великих потрясений дом ушёл в тень глубже, чем когда-либо.</p>
+          <p>Архивы рассеяны. Часть уничтожена. Часть ждёт тех, кого пригласит Магистр.</p>
+          <p class="ending">История не закончена. Она лишь закрыта для глаз недостойных.</p>
+        </div>
+      </section>
+
+      <!-- Секреты -->
+      <section id="tab-secrets" class="tab-panel">
+        <h2>Секретные документы</h2>
+        <div id="secrets-locked" class="locked-message">
+          <div class="lock-big">🔒</div>
+          <h3>Доступ запрещён</h3>
+          <p>Только Магистр, Глава или приглашённые по коду.</p>
+          <div class="invite-form">
+            <input type="text" id="invite-code" placeholder="Код приглашения" maxlength="12">
+            <button id="redeem-invite" class="btn-primary">Активировать</button>
+          </div>
+          <p id="invite-error" class="error hidden"></p>
+        </div>
+        <div id="secrets-content" class="hidden">
+          <div class="secrets-subnav">
+            <button class="secrets-subbtn active" data-secret="archive">Архив</button>
+            <button class="secrets-subbtn" data-secret="revolution">Революция</button>
+          </div>
+          <div id="secret-panel-archive" class="secret-subpanel active">
+            <div class="secret-docs">
+              <article class="secret-card">
+                <h3>Операция «Цитадель»</h3>
+                <p class="meta">Секретно</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1toNCk8Kr45Xgd-WUzfflfQ3QKlASVAEmg9Cv6Ty0vXQ/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Правила Федерального Съезда фракций</h3>
+                <p class="meta">Секретно</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1HCK6LB2XuBCc6_uDBAko3KYJWl_MaucVCSKfbG5oQB4/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Доктрина военных действий</h3>
+                <p class="meta">Секретно</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1x21RP-S6RODE887yXWA33FKsbKWtqiGHuMsBhuYw_xM/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Доктрина вторичного применения</h3>
+                <p class="meta">Секретно</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1H6lCEU2MzR0Nn2HsmX7t9QXWRFBygQEhY6q1t4xkbrM/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Военные звания Ордена</h3>
+                <p class="meta">Секретно</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1zWkD8qr6LDyG_h_U1YRyShcAk7h_eMVt7I5I7xLPkuQ/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+            </div>
+          </div>
+          <div id="secret-panel-revolution" class="secret-subpanel hidden">
+            <h3 class="secret-subheading">Революция</h3>
+            <div class="secret-docs">
+              <article class="secret-card">
+                <h3>План революции</h3>
+                <p class="meta">Революция</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1tCPbPupgW_c2rqBVtsi0q7DTHdR_yQbPalR93KBwbIo/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Закон о фракциях, невмешательстве и контроле конфликтов</h3>
+                <p class="meta">Революция</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1ZMMUj1G1GJ0sw5kA_rfKQTsQYEMcRHzzoJOU-6J1Sx4/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Устав внутреннего контроля военной деятельности фракций</h3>
+                <p class="meta">Революция</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/196k4pkldCGGFxQ_3fAecxcj6zqBq_75stnemPQ5hk7U/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Военная иерархия званий</h3>
+                <p class="meta">Революция</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1vONVQTG_QjMrqE_Jc8pGvjRYjm8CUgh-M5aXbFm0wlA/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Конституция государства</h3>
+                <p class="meta">Революция</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/18KtrbgB-20dzbsDbtbt-p83Ugh8K8LzVFN2TSFkmGOM/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Внутригосударственная конвенция</h3>
+                <p class="meta">Революция</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1sAC0TL57Rnu6Lh3G7fqoPTSoAXlAe3gNl6FsWBA5jug/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+              <article class="secret-card">
+                <h3>Государственная программа реформ</h3>
+                <p class="meta">Революция</p>
+                <p><a class="doc-link" href="https://docs.google.com/document/d/1S8dqyqACIUR1zRntrQakaWeiU8nL2WAJjLHM_HAL3GA/edit?tab=t.0" target="_blank" rel="noopener">Открыть документ →</a></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Настройки -->
+      
+      <section id="tab-templars" class="tab-panel">
+        <h2>Орден тамплиеров</h2>
+        <div class="article">
+          <p class="lead">Орден тамплиеров был создан в 1775 году Джеймсом Мориарти как организация, подчинённая дому.</p>
+          <p>Тамплиеры служили военной и духовной рукой Мориарти: клятвы, цепи и белые плащи скрывали тех, кто действовал по воле Главы.</p>
+          <ul class="timeline">
+            <li><span class="year">1775</span> — основание Ордена тамплиеров.</li>
+            <li><span class="year">1795</span> — под командованием Джеймса Мориарти орден побеждает в гражданской войне в доме Тумэн; на полученных землях основан дом Мориарти.</li>
+            <li><span class="year">1820—1855</span> — укрепление ордена при Теодоре Джеймсе Мориарти.</li>
+            <li><span class="year">2019</span> — Луис Джеймс Мориарти объявлен предателем ордена.</li>
+            <li><span class="year">2020</span> — Уильям Джеймс Мориарти объявлен предателем ордена.</li>
+            <li><span class="year">2021</span> — раскол ордена на две фракции.</li>
+            <li><span class="year">2022</span> — полное уничтожение Ордена тамплиеров.</li>
+          </ul>
+          <p>После 2022 года орден существует лишь в архивах и памяти дома.</p>
+        </div>
+      </section>
+
+      
+      <section id="tab-crest" class="tab-panel">
+        <h2>Герб дома</h2>
+        <div class="relics-grid">
+          <article class="relic-card wide">
+            <img src="assets/relic-crest.jpg" alt="Герб дома Мориарти">
+            <div class="relic-caption">
+              <h3>Герб дома Мориарти</h3>
+              <p><em>Umbra Custos, Lux Judex</em> — Тень — Страж, Свет — Судья.<br>
+              <em>Mens Agitat Molem</em> — Разум движет массой.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="tab-settings" class="tab-panel">
+        <h2>Настройки</h2>
+        <div class="settings-block">
+          <h3>Смена имени</h3>
+          <p class="small">Отображаемое имя в архивах.</p>
+          <div class="form-stack">
+            <div class="name-input">
+              <label for="new-display-name">Новое имя</label>
+              <input type="text" id="new-display-name" maxlength="24">
+            </div>
+            <button id="change-name-btn" class="btn-primary">Сохранить имя</button>
+            <p id="change-name-msg" class="msg hidden"></p>
+          </div>
+        </div>
+        <div class="settings-block">
+          <h3>Смена пароля</h3>
+          <p class="small" id="pw-change-hint">Только для Магистра и Главы.</p>
+          <div id="change-password-form" class="form-stack hidden">
+            <div class="name-input">
+              <label for="old-password">Текущий пароль</label>
+              <input type="password" id="old-password" maxlength="64">
+            </div>
+            <div class="name-input">
+              <label for="new-password">Новый пароль</label>
+              <input type="password" id="new-password" maxlength="64">
+            </div>
+            <div class="name-input">
+              <label for="new-password2">Повторите</label>
+              <input type="password" id="new-password2" maxlength="64">
+            </div>
+            <button id="change-pw-btn" class="btn-primary">Сменить пароль</button>
+            <p id="change-pw-msg" class="msg hidden"></p>
+          </div>
+        </div>
+        <div id="delete-acc-block" class="settings-block hidden">
+          <h3>Удаление аккаунта</h3>
+          <p class="small">Безвозвратно удалит ваш аккаунт Магистра/Главы. Потребуется повторный вход.</p>
+          <div class="form-stack">
+            <div class="name-input">
+              <label for="delete-password">Подтвердите паролем</label>
+              <input type="password" id="delete-password" maxlength="64">
+            </div>
+            <button id="delete-acc-btn" class="btn-primary" style="background:linear-gradient(135deg,#822,#c44);">Удалить аккаунт</button>
+            <p id="delete-acc-msg" class="msg hidden"></p>
+          </div>
+        </div>
+        <div id="admin-block" class="settings-block hidden">
+          <h3>Создание аккаунта</h3>
+          <div class="form-stack">
+            <div class="name-input">
+              <label for="new-acc-name">Имя</label>
+              <input type="text" id="new-acc-name" maxlength="24">
+            </div>
+            <div class="name-input">
+              <label for="new-acc-role">Роль</label>
+              <select id="new-acc-role">
+                <option value="master">Магистр ордена</option>
+              </select>
+            </div>
+            <div class="name-input">
+              <label for="new-acc-password">Пароль</label>
+              <input type="password" id="new-acc-password" maxlength="64">
+            </div>
+            <button id="create-acc-btn" class="btn-primary">Создать</button>
+            <p id="create-acc-msg" class="msg hidden"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside id="master-panel" class="master-panel hidden">
+      <h3>Панель Магистра</h3>
+      <p>Код приглашения к секретам.</p>
+      <button id="generate-invite" class="btn-primary">Создать код</button>
+      <div id="invite-result" class="invite-result hidden">
+        <p>Код:</p>
+        <code id="generated-code"></code>
+        <button id="copy-code" class="btn-ghost">Копировать</button>
+      </div>
+    </aside>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
