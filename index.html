@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamCraft Panel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="login-screen" class="screen">
+      <div class="login-card">
+        <div class="logo">DreamCraft</div>
+        <div class="subtitle">Внутренняя панель регламентов</div>
+        <form id="login-form">
+          <input type="text" id="login-input" placeholder="Логин" autocomplete="username" required>
+          <input type="password" id="password-input" placeholder="Пароль" autocomplete="current-password" required>
+          <button type="submit">Войти</button>
+          <div id="login-error" class="error"></div>
+        </form>
+      </div>
+    </div>
+
+    <div id="main-screen" class="screen hidden">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo-small">DreamCraft</div>
+          <div id="user-info" class="user-info"></div>
+          <div class="top-actions">
+            <button id="btn-users" class="nav-btn hidden">Аккаунты</button>
+            <button id="btn-settings" class="nav-btn">Настройки</button>
+            <button id="btn-logout" class="nav-btn danger">Выйти</button>
+          </div>
+        </div>
+        <div class="nav-section">Регламенты</div>
+        <div class="nav-scroll">
+          <nav id="nav-docs"></nav>
+          <div class="nav-section">Прочее</div>
+          <button class="nav-item" id="nav-cheats">БД по читам</button>
+          <button class="nav-item" id="nav-guide">Гайд по нарушителям</button>
+        </div>
+      </aside>
+      <main class="content">
+        <div id="panel-docs" class="panel">
+          <div class="welcome"><h1>Добро пожаловать</h1><p>Выберите документ слева</p></div>
+        </div>
+        <div id="panel-users" class="panel hidden">
+          <h1>Управление аккаунтами</h1>
+          <div class="meta">Создание и удаление аккаунтов сотрудников</div>
+          <div class="create-form">
+            <h3>Создать аккаунт</h3>
+            <div class="form-row">
+              <input type="text" id="new-login" placeholder="Логин">
+              <input type="password" id="new-password" placeholder="Пароль">
+              <input type="email" id="new-email" placeholder="Почта (необяз.)">
+              <input type="text" id="new-displayname" placeholder="Имя">
+              <select id="new-role"></select>
+              <button id="btn-create">Создать</button>
+            </div>
+            <div id="create-msg" class="msg"></div>
+          </div>
+          <div id="users-list" class="users-list"></div>
+        </div>
+        <div id="panel-settings" class="panel hidden">
+          <h1>Настройки</h1>
+          <div class="meta">Смена имени и пароля</div>
+          <div class="settings-form">
+            <h3>Отображаемое имя</h3>
+            <div class="form-row">
+              <input type="text" id="set-name" placeholder="Новое имя">
+              <button id="btn-save-name">Сохранить</button>
+            </div>
+            <div id="name-msg" class="msg"></div>
+          </div>
+          <div class="settings-form">
+            <h3>Смена пароля</h3>
+            <div class="form-row">
+              <input type="password" id="set-old-pass" placeholder="Текущий пароль">
+              <input type="password" id="set-new-pass" placeholder="Новый пароль">
+              <input type="password" id="set-new-pass2" placeholder="Повтор нового">
+              <button id="btn-save-pass">Сменить пароль</button>
+            </div>
+            <div id="pass-msg" class="msg"></div>
+          </div>
+        </div>
+        <div id="panel-cheats" class="panel hidden">
+          <h1>БД по читам</h1>
+          <div class="meta">База данных читов и детектов</div>
+          <div class="empty-box">Раздел пока пустой.<br>Сюда можно будет добавлять записи о читах.</div>
+        </div>
+        <div id="panel-guide" class="panel hidden">
+          <h1>Гайд по работе с нарушителями</h1>
+          <div class="meta">Инструкция для сотрудников</div>
+          <div class="empty-box">Раздел пока пустой.<br>Кидай текст — добавлю полностью.</div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="js/docs.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
